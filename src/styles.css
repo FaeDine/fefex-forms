@@ -6,3 +6,18 @@ body {
 h2, p {
   color: #efefef;
 }
+
+input.ng-invalid.ng-touched,
+input.ng-invalid.ng-dirty {
+  border: 2px solid red;
+  background-color: palevioletred;
+}
+
+input.ng-valid.ng-touched {
+  border: 2px solid green;
+  background-color: #ffffff;
+}
+
+.err {
+  color: red;
+}

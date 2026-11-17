@@ -111,7 +111,29 @@
                     }
 
                 <label for="">SSN</label>
-                <input type="text" class="form-control">
+                <input type="text" 
+                    required
+                    [(ngModel)]="customer.ssn"
+                    name="ssn"
+                    #ssn="ngModel"
+                    class="form-control"
+                    pattern="\d{3}-\d{3}-\d{3}">
+                    @if(ssn?.touched || ssn?.dirty ||
+                    customerForm.submitted) {
+                            @if(ssn?.errors?.['required']) {
+                                <div class="err">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                                Social Security Number is required
+                                </div>
+                            }
+                            @if(ssn?.errors?.['pattern']) {
+                                <div class="err">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                                Social Security Number should be in
+                                the format NNN-NNN-NNN.
+                                </div>
+                            }
+                    }
 
                 <h4 class="mt-2"></h4>
             
