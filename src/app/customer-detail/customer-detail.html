@@ -1,0 +1,35 @@
+<h2 class="text-center">Customer Details</h2>
+
+@if(!!message){
+<h3 class="alert alert-danger text-center">
+    {{message}}
+</h3>
+}
+
+@if(customer$ | async; as customer) {
+
+    @if(!!customer){
+        <div class="card text-center" style="width:50%;margin: auto;">
+            <h4 class="card-header">
+                {{customer.firstName}} {{customer.lastName}}
+            </h4>
+            <div class="card-body">
+                <h5 class="card-title">Phone: {{customer.phone}}</h5>
+                <div class="card-text">
+                    <div>{{customer.address}}</div>
+
+                    @if(!!customer.dob){
+                    <div>Date of birth: {{ customer.dob | date }}</div>
+                    }
+                </div>
+            </div>
+            <div class="card-footer">Customer Id: {{customer.id}}</div>
+        </div>
+    }
+
+} @else {
+    <div class="text-center">
+        <div class="spinner-border text-primary"></div>
+        <h3>Loading customer..</h3>
+    </div>
+}
